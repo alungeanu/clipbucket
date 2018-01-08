@@ -42,10 +42,14 @@ if (!function_exists('cb_video_js'))
 
 
 		assign('height',$in['height']);
-        assign('width',$in['width']);
+        	assign('width',$in['width']);
 		assign('player_config',$in);
 		assign('vdata',$vdetails);
+		/* andrei - custom urluser-logouser */
+		assign("urluser", $vdetails['avatar_url']);
+		define("logouser", $vdetails['avatar']);
 		assign('cb_logo',cb_logo());
+
 		#assign('video_files',$video_play);
 		
 		Template(CB_VJS_PLAYER_DIR.'/cb_video_js.html',false);
@@ -55,9 +59,12 @@ if (!function_exists('cb_video_js'))
 	/*
 	* This Function is written to base64 encode file fo cb logo
 	*/
+
+	/* ANDREI - LOGO PLAYER */
+
 	function cb_logo()
 	{
-		$l_details = BASEDIR.'/images/icons/country/hp-cb.png';
+		$l_details = BASEDIR. '/images/avatars/'. logouser;
 		$l_convert = base64_encode(file_get_contents($l_details));
 		return $l_convert;
 	}
@@ -67,7 +74,7 @@ if (!function_exists('cb_video_js'))
 	*/
 	function get_cbvjs_quality($src){
 		
-		$quality = explode('-', $src);
+	    $quality = explode('-', $src);
 	    $quality = end($quality);
 	    $quality = explode('.',$quality);
 	    $quality = $quality[0];

@@ -92,8 +92,9 @@
 	var vid_id = "{$vdata.videoid}";
 	var videotitle = "{$vdata.title|escape_quotes}";
 	var uploader = "{$vdata.username}";
+	/* andrei - custom urluser */
 	var branding_logo  = "{$cb_logo}";
-	var product_link = "{$player_config.player_logo_url}";
+	var product_link = "{$urluser}";
 	var show_logo = true;
 	var default_res = "{$default_quality}";
 	var autoplay = "{$player_config.autoplay}";
